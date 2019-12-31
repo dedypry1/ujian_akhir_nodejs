@@ -1,0 +1,21 @@
+img.pimage{
+	width: 150px;
+}
+
+a.pahref {
+	display: inline-block;
+	height: 160px;
+}
+
+.row .product .p{
+	margin-top: 20px;
+	margin-bottom: 20px; 
+}
+
+img.spi{
+	width: 100%;
+}
+
+img.cpi{
+	width: 100px;
+}

@@ -1,0 +1,54 @@
+<% include layout/header %>
+	
+	<h1 class="page-title"><%= title %></h1>
+	<br><br>
+
+<% if(typeof cart !== "undefined") { %>
+
+	<table class="table table-striped alignmiddle">
+		
+		<tr>
+			<th>Image</th>
+			<th>Title</th>
+			<th>Price</th>
+			<th>Quantity</th>
+			<th></th>
+			<th>Subtotal</th>
+		</tr>
+
+		<% var total = 0; %>
+		<% cart.forEach(function(product){ %>
+			<% var sub = product.qty * product.price %>
+			<% total += +sub %>
+
+			<tr>
+				<th><img src="<%= product.image %>" class="cpi"></th>
+				<th><%= product.title %></th>
+				<th><%= product.price %></th>
+				<th><%= product.qty %></th>
+				<th>
+					<a href="/cart/update/<%= product.title %>?action=add">+</a>
+					<a href="/cart/update/<%= product.title %>?action=remove">-</a>
+					<a href="/cart/update/<%= product.title %>?action=clear">Clear</a>
+				</th>
+				<th>Rp. <%= sub %></th>
+			</tr>
+		<% }); %>
+
+			<tr>
+				<td colspan="6" align="right"><b>Total : </b> Rp. <%= total %></td>
+			</tr>
+			<tr>
+				<td colspan="5" align="right">
+					<a href="/cart/clear" class="clearcart btn btn-danger">Clear Cart</a>
+				</td>
+				<td align="right">
+					<a href="/cart/checkout" class="btn btn-primary">Buy Now</a>
+				</td>
+			</tr>
+	</table>
+
+<% } else {%>
+	<h3 class="text-center">Cart Kamu kosong harap belanja terlebih dahulu.</h3>
+<% } %>
+<% include layout/footer %>
